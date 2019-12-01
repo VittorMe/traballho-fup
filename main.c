@@ -4,14 +4,17 @@
 
 #include "Cliente.h"
 #include "Produto.h"
+#include "Venda.h"
 
 
 
+Cliente *Primeiro;
+Produtos *Segundo;
+Venda *terceiro;
 int main(){
     
-    Cliente *Primeiro;
-    Produtos *Segundo;
-    Venda *terceiro;
+    
+
     int tam_cliente = 0;
     int tam_produto = 0;
     int tam_venda = 0;
@@ -142,9 +145,55 @@ int main(){
             scanf("%d", &opc);
             system("cls");
             getchar();
+                if(opc == 1){
+                    system("cls");
+                    printf(" %c----------------------------------------------------------------------------%c\n",201,187);
+                    printf(" | ");printf("\t\t\t          NOVO CADASTRO     ");printf("\t\t\t      |\n");
+                    printf(" %c----------------------------------------------------------------------------%c\n",200,188);
+                    Venda a = lerVenda(Primeiro, &tam_cliente, Segundo , &tam_produto);
+                    terceiro = insere_venda(terceiro, &tam_venda, a);
+                    break;
+                }
+                if(opc==2){
+                    system("cls");
+                    printf(" %c----------------------------------------------------------------------------%c\n",201,187);
+                    printf(" | ");printf("\t\t\t    Pesquisar Venda  ");printf("\t\t\t      |\n");
+                    printf(" %c----------------------------------------------------------------------------%c\n",200,188);
+                    pesquisa_venda(terceiro, &tam_venda);
+                    system("pause");
+                    break;
+                }
+                if(opc==3){
+                    system("cls");
+                    printf(" %c----------------------------------------------------------------------------%c\n",201,187);
+                    printf(" | ");printf("\t\t\t     Vendas Cadastrados");printf("\t\t\t      |\n");
+                    printf(" %c----------------------------------------------------------------------------%c\n",200,188);
+                    listar_venda(terceiro, &tam_venda);
+                    system("pause");
+                    break;
+                }
+                if(opc == 4){
+                    system ("cls");
+                    printf(" %c----------------------------------------------------------------------------%c\n",201,187);
+                    printf(" | ");printf("\t\t\t        EXCLUIR PRODUTO  ");printf("\t\t\t      |\n");
+                    printf(" %c----------------------------------------------------------------------------%c\n",200,188);
+                    terceiro = excluir_venda(terceiro, &tam_venda);
+                    system("pause");
+                    break;
+                }
+                if(opc==5){
+                    MenuPrincipal();
+                }
+                else
+                    printf("Opcao Invalida\n\n");
+            case '4':
+                system("cls");
+                exit(1);
                 
+            break;    
         }
     }   
     free(Primeiro);
     free(Segundo);
+    free(terceiro);
 }
