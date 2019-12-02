@@ -90,7 +90,20 @@ void listar_produto(Produtos *p, int *tam){
         printf("\n\n");
     }
 }
-
+void salvar_produto(Produtos * v, int * tam){
+	FILE *arq_floricultura = fopen("Produtos.txt", "r");
+	
+	for (int i = 0 ; i < *tam; i++){
+		
+		fprintf(arq_floricultura, "\n-----------------------------------\n");
+		fprintf(arq_floricultura, "Codigo do Produto: %d", v[i].codP);
+		fprintf(arq_floricultura, "\nNome do Produto: %s", v[i].nome);
+		fprintf(arq_floricultura, "\nQuantidade do Produto: %d", v[i].qnt);
+		fprintf(arq_floricultura, "\nValor do Produto: R$ %.2f", v[i].valor);
+		fprintf(arq_floricultura, "\n-----------------------------------\n\n");
+	}
+	fclose(arq_floricultura);
+}
 Produtos *excluir_produto(Produtos *v, int *tam){
     printf("Digite o COdigo do Produto que deseja EXCLUIR: ");
     int cod;

@@ -192,7 +192,11 @@ int main(){
                 
             break;    
         }
-    }   
+    } 
+    salvar_cliente(Primeiro, &tam_cliente);
+    salvar_produto(Segundo, &tam_produto);
+    salvar_venda(terceiro, &tam_venda);
+    
     free(Primeiro);
     free(Segundo);
     free(terceiro);

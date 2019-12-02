@@ -23,6 +23,8 @@ void listar_cliente(Cliente *v, int *tam);
 
 Cliente *excluir_cliente(Cliente *v, int *tam);
 
+void salvar_cliente(Cliente *v, int *tam);
+
 void BoasVindas();
 
 void SubMenur();

@@ -3,11 +3,7 @@
 #include <string.h>
 
 #include "Venda.h"
-#include "Cliente.h"
-#include "Produto.h"
 
-extern Cliente *Primeiro;
-extern Produtos *Segundo;
 
 Venda lerVenda(Cliente *c, int *tam_c, Produtos *p, int *tam_p){
     Venda terceiro;
@@ -134,6 +130,20 @@ void listar_venda(Venda *v, int *tam){
         printf("\n-----------------------------------\n");
         printf("\n\n");	
     }
+}
+void salvar_venda(Venda * v, int * tam){
+	FILE *arq_floricultura = fopen("Venda.txt", "r");
+	
+	for (int i = 0 ; i < *tam; i++){
+		
+		fprintf(arq_floricultura, "\n-----------------------------------\n");
+		fprintf(arq_floricultura, "Codigo da Venda: %d", v[i].codV);
+		fprintf(arq_floricultura, "\nCPF do CLiente: %s", v[i].CodC);
+		fprintf(arq_floricultura, "\nCodigo do Produto: %d", v[i].CodP);
+		fprintf(arq_floricultura, "\nQuantidade vendida: %d", v[i].qtd);
+		fprintf(arq_floricultura, "\n-----------------------------------\n\n");
+	}
+	fclose(arq_floricultura);
 }
 
 Venda *excluir_venda(Venda *v, int *tam){
