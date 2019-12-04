@@ -92,18 +92,31 @@ void listar_produto(Produtos *p, int *tam){
 }
 void salvar_produto(Produtos * v, int * tam){
 	FILE *arq = fopen("Produtos.txt", "w+");
-	
+	if (arq == NULL){
+        printf("Problema na abertura do arquivo !!");
+    }
 	for (int i = 0 ; i < *tam; i++){
-		fprintf(arq, "\n-----------------------------------\n");
-		fprintf(arq, "Codigo do Produto: %d", v[i].codP);
-		fprintf(arq, "\nNome do Produto: %s", v[i].nome);
-		fprintf(arq, "\nQuantidade do Produto: %d", v[i].qnt);
-		fprintf(arq, "\nValor do Produto: R$ %.2f", v[i].valor);
-		fprintf(arq, "\n-----------------------------------\n\n");
+		fprintf(arq, "%d", v[i].codP);
+		fprintf(arq, " %s", v[i].nome);
+		fprintf(arq, " %d", v[i].qnt);
+		fprintf(arq, " %.2f\n", v[i].valor);
 	}
 	fclose(arq);
 
 }
+
+void carrega_arqProduto(Produtos *v, int *tam){
+    FILE *arq = fopen("Produtos.txt", "r");
+    if (arq == NULL){
+        printf("ERRO: nao foi possivel abrir arquivo !!");
+        return ;
+    }
+    for (int i = 0 ; i < *tam; i ++){
+        fscanf(arq,"%d %s %d %f\n", &v[i].codP, v[i].nome, &v[i].qnt, v[i].valor);
+    }
+    fclose(arq);
+}
+
 Produtos *excluir_produto(Produtos *v, int *tam){
     printf("Digite o COdigo do Produto que deseja EXCLUIR: ");
     int cod;

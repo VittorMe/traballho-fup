@@ -14,7 +14,11 @@ int main(){
     int tam_cliente = 0;
     int tam_produto = 0;
     int tam_venda = 0;
-    
+
+    carrega_arqCliente(Primeiro, &tam_cliente);
+    carrega_arqProduto(Segundo, &tam_produto);
+    carrega_arqVenda(terceiro, &tam_venda);
+
     BoasVindas();
     char escolha;
     int opc=0;
@@ -184,7 +188,7 @@ int main(){
                     printf("Opcao Invalida\n\n");
             case '4':
                 system("cls");
-                exit(1);
+                escolha= 's';
                 
             break;    
         }

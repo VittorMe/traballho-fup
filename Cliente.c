@@ -102,18 +102,30 @@ void listar_cliente(Cliente *v, int *tam){
 
 void salvar_cliente(Cliente *v, int *tam){
 	FILE *arq = fopen(".\\Clientes.txt", "w+");
-
+    if (arq == NULL){
+        printf("Problema na abertura do arquivo !!");
+    }
 	
 	for(int i =0 ; i < *tam; i++){
-		fprintf(arq, "\n-----------------------------------\n");
-		fprintf(arq, "CPF do Cliente: %s", v[i].CPF);
-		fprintf(arq, "\nNome do Cliente: %s", v[i].nome);
-		fprintf(arq, "\nIdade do Cliente: %d", v[i].idade);
-		fprintf(arq, "\nEndereco do Cliente: R$ %s", v[i].endereco);
-		fprintf(arq, "\nTelefone do Cliente: R$ %s", v[i].telefone);
-		fprintf(arq, "-----------------------------------\n\n");
+		fprintf(arq, "%s", v[i].CPF);
+		fprintf(arq, " %s", v[i].nome);
+		fprintf(arq, " %d", v[i].idade);
+		fprintf(arq, " %s", v[i].endereco);
+		fprintf(arq, " %s\n", v[i].telefone);
+		
 	}
 	fclose(arq);
+}
+void carrega_arqCliente(Cliente *v, int *tam){
+    FILE *arq = fopen("Clientes.txt", "r");
+    if (arq == NULL){
+        printf("ERRO: nao foi possivel abrir arquivo !!");
+        return ;
+    }
+    for (int i = 0 ; i < *tam; i ++){
+        fscanf(arq,"%s %s %d %s %s\n", v[i].CPF, v[i].nome, &v[i].idade, v[i].endereco, v[i].telefone);
+    }
+    fclose(arq);
 }
 
 Cliente *excluir_cliente(Cliente *v, int *tam){

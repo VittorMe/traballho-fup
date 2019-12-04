@@ -137,17 +137,25 @@ void salvar_venda(Venda * v, int * tam){
 	if (arq == NULL){
         printf("Problema na abertura do arquivo !!");
     }
-
 	for (int i = 0 ; i < *tam; i++){
-		
-		fprintf(arq, "\n-----------------------------------\n");
-		fprintf(arq, "Codigo da Venda: %d", v[i].codV);
-		fprintf(arq, "\nCPF do CLiente: %s", v[i].CodC);
-		fprintf(arq, "\nCodigo do Produto: %d", v[i].CodP);
-		fprintf(arq, "\nQuantidade vendida: %d", v[i].qtd);
-		fprintf(arq, "\n-----------------------------------\n\n");
+		fprintf(arq, "%d", v[i].codV);
+		fprintf(arq, " %d", v[i].CodC);
+		fprintf(arq, " %d", v[i].CodP);
+		fprintf(arq, " %d\n", v[i].qtd);
 	}
 	fclose(arq);
+}
+
+void carrega_arqVenda(Venda *v, int *tam){
+    FILE *arq = fopen("venda.txt", "r");
+    if (arq == NULL){
+        printf("ERRO: nao foi possivel abrir arquivo !!");
+        return ;
+    }
+    for (int i = 0 ; i < *tam; i ++){
+        fscanf(arq,"%d %s %d %d\n", &v[i].codV, &v[i].CodC, &v[i].codV, v[i].qtd);
+    }
+    fclose(arq);
 }
 
 Venda *excluir_venda(Venda *v, int *tam){

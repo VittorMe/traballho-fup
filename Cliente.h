@@ -23,6 +23,8 @@ Cliente *excluir_cliente(Cliente *v, int *tam);
 
 void salvar_cliente(Cliente *v, int *tam);
 
+void carrega_arqCliente(Cliente *v, int *tam);
+
 void BoasVindas();
 
 void SubMenur();

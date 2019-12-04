@@ -21,5 +21,7 @@ void listar_venda(Venda *v, int *tam);
 
 void salvar_venda(Venda * v, int * tam);
 
+void carrega_arqVenda(Venda *v, int *tam);
+
 Venda *excluir_venda(Venda *v, int *tam);
 #endif
