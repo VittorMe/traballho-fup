@@ -24,6 +24,7 @@ Venda lerVenda(Cliente *c, int *tam_c, Produtos *p, int *tam_p){
     }
     if (achouC == -1){
         printf("Cliente ainda nao esta Cadastrado  no Banco de Dados!!");
+        
     }
     else{
         strcpy(terceiro.CodC, buscaC);
@@ -41,7 +42,7 @@ Venda lerVenda(Cliente *c, int *tam_c, Produtos *p, int *tam_p){
     }
     if (achouP == -1){
         printf("Produto nao cadastro no Banco de Dados !!\n");
-        MenuPrincipal();
+        
     }
     else{
         terceiro.CodP == buscaP;
@@ -54,7 +55,7 @@ Venda lerVenda(Cliente *c, int *tam_c, Produtos *p, int *tam_p){
         if (p[i].codP == buscaP){
             if (p[i].qnt < qtdV){
                 printf("Nao possui quatidade necessaria no estoque !!");
-                MenuPrincipal();
+                break;
             }
             else{
                 p[i].qnt -= qtdV;
@@ -132,18 +133,21 @@ void listar_venda(Venda *v, int *tam){
     }
 }
 void salvar_venda(Venda * v, int * tam){
-	FILE *arq_floricultura = fopen("Venda.txt", "r");
-	
+	FILE *arq = fopen("venda.txt", "w+");
+	if (arq == NULL){
+        printf("Problema na abertura do arquivo !!");
+    }
+
 	for (int i = 0 ; i < *tam; i++){
 		
-		fprintf(arq_floricultura, "\n-----------------------------------\n");
-		fprintf(arq_floricultura, "Codigo da Venda: %d", v[i].codV);
-		fprintf(arq_floricultura, "\nCPF do CLiente: %s", v[i].CodC);
-		fprintf(arq_floricultura, "\nCodigo do Produto: %d", v[i].CodP);
-		fprintf(arq_floricultura, "\nQuantidade vendida: %d", v[i].qtd);
-		fprintf(arq_floricultura, "\n-----------------------------------\n\n");
+		fprintf(arq, "\n-----------------------------------\n");
+		fprintf(arq, "Codigo da Venda: %d", v[i].codV);
+		fprintf(arq, "\nCPF do CLiente: %s", v[i].CodC);
+		fprintf(arq, "\nCodigo do Produto: %d", v[i].CodP);
+		fprintf(arq, "\nQuantidade vendida: %d", v[i].qtd);
+		fprintf(arq, "\n-----------------------------------\n\n");
 	}
-	fclose(arq_floricultura);
+	fclose(arq);
 }
 
 Venda *excluir_venda(Venda *v, int *tam){

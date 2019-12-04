@@ -6,15 +6,11 @@
 #include "Produto.h"
 #include "Venda.h"
 
-
-
-Cliente *Primeiro;
-Produtos *Segundo;
-Venda *terceiro;
 int main(){
     
-    
-
+    Cliente *Primeiro;
+    Produtos *Segundo;
+    Venda *terceiro;    
     int tam_cliente = 0;
     int tam_produto = 0;
     int tam_venda = 0;
@@ -44,7 +40,7 @@ int main(){
                     printf(" | ");printf("\t\t\t          NOVO CADASTRO     ");printf("\t\t\t      |\n");
                     printf(" %c----------------------------------------------------------------------------%c\n",200,188);
                     Primeiro = insere_cliente(Primeiro, &tam_cliente, lerCLiente());
-                break;
+                    break;
                 }
                 if(opc== 2){
                     system ("cls");
@@ -196,7 +192,7 @@ int main(){
     salvar_cliente(Primeiro, &tam_cliente);
     salvar_produto(Segundo, &tam_produto);
     salvar_venda(terceiro, &tam_venda);
-    
+
     free(Primeiro);
     free(Segundo);
     free(terceiro);

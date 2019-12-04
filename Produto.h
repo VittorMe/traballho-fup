@@ -19,5 +19,7 @@ void pesquisa_produto(Produtos *v, int *tam);
 
 void listar_produto(Produtos *p, int *tam);
 
+void salvar_produto(Produtos * v, int * tam);
+
 Produtos *excluir_produto(Produtos *v, int *tam);
 #endif

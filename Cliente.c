@@ -101,19 +101,19 @@ void listar_cliente(Cliente *v, int *tam){
 }
 
 void salvar_cliente(Cliente *v, int *tam){
-	FILE *arq_floricultura = fopen("Clientes.txt", "r");
+	FILE *arq = fopen(".\\Clientes.txt", "w+");
 
 	
 	for(int i =0 ; i < *tam; i++){
-		fprintf(arq_floricultura, "\n-----------------------------------\n");
-		fprintf(arq_floricultura, "CPF do Cliente: %s", v[i].CPF);
-		fprintf(arq_floricultura, "\nNome do Cliente: %s", v[i].nome);
-		fprintf(arq_floricultura, "\nIdade do Cliente: %d", v[i].idade);
-		fprintf(arq_floricultura, "\nEndereco do Cliente: R$ %s", v[i].endereco);
-		fprintf(arq_floricultura, "\nTelefone do Cliente: R$ %s", v[i].telefone);
-		fprintf(arq_floricultura, "-----------------------------------\n\n");
+		fprintf(arq, "\n-----------------------------------\n");
+		fprintf(arq, "CPF do Cliente: %s", v[i].CPF);
+		fprintf(arq, "\nNome do Cliente: %s", v[i].nome);
+		fprintf(arq, "\nIdade do Cliente: %d", v[i].idade);
+		fprintf(arq, "\nEndereco do Cliente: R$ %s", v[i].endereco);
+		fprintf(arq, "\nTelefone do Cliente: R$ %s", v[i].telefone);
+		fprintf(arq, "-----------------------------------\n\n");
 	}
-	fclose(arq_floricultura);
+	fclose(arq);
 }
 
 Cliente *excluir_cliente(Cliente *v, int *tam){

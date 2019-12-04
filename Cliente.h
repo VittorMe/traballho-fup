@@ -11,8 +11,6 @@ typedef struct {
 
 }Cliente;
 
-
-
 Cliente lerCLiente();
 
 Cliente *insere_cliente(Cliente *v, int *tam, Cliente novo);
